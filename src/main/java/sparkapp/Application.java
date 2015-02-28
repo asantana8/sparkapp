@@ -1,44 +1,36 @@
 package sparkapp;
 
-import static spark.Spark.get;
-import static spark.SparkBase.port;
-
 import java.sql.SQLException;
 
-import persist.StepDao;
-import sparkapp.domain.Step;
-
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.jdbc.JdbcConnectionSource;
-import com.j256.ormlite.support.ConnectionSource;
+import spark.Spark;
+import sparkapp.domain.Task;
+import sparkapp.util.DbUtil;
 
 public class Application {
 
-	private static ConnectionSource connection;
-	private static Dao<Step, Long> stepDao;
 
 	public static void main(String[] args) throws SQLException {
-		setupBD();
+		Spark.port(8080);
+		Spark.staticFileLocation("/public");
 
-		port(1234);
-		get("/hello", "application/json", (request, response) -> {
-		    return stepDao.queryForAll();
-		}, new JsonTransformer());
+		JsonTransformer jsonTransformer = new JsonTransformer();
+		Spark.get("/api/steps", (request, response) -> {
+			response.type("application/json");
+		    return DbUtil.INSTANCE.getStepDao().list();
+		}, jsonTransformer);
+
+		Spark.post("/api/tasks", "application/json", (request, response) -> {
+			Task task = jsonTransformer.parse(request.body(), Task.class);
+			DbUtil.INSTANCE.getTaskDao().save(task);	
+		    return "";
+		});
+
+		Spark.delete("/api/tasks/:task_id", (request, response) -> {
+			Long id = Long.valueOf(request.params(":task_id"));
+			DbUtil.INSTANCE.getTaskDao().deleteById(id);			
+		    return "";
+		});
 
 	}
-
-	private static void setupBD() throws SQLException {
-		stepDao = new StepDao(getConnection(), Step.class);
-	}
-
-	private static  ConnectionSource getConnection() throws SQLException {
-        if (connection == null) {
-            String databaseName = Application.class.getResource("/app.db").getPath().substring(1);
-            String url = "jdbc:h2:file:" + databaseName;
-            String user = "sa";
-            connection = new JdbcConnectionSource(url, user, "");
-        }
-        return connection;
-    }
 
 }

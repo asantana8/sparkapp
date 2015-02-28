@@ -1,14 +1,13 @@
 package sparkapp.domain;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
+import java.util.List;
 
-@DatabaseTable(tableName = "step")
 public class Step {
 
-	@DatabaseField(id = true) private Long id;
-	@DatabaseField private String title;
-	@DatabaseField private String description;
+	private Long id;
+	private String title;
+	private boolean isFinally;
+	private List<Task> tasks;
 
 	public Long getId() {
 		return id;
@@ -26,12 +25,20 @@ public class Step {
 		this.title = title;
 	}
 
-	public String getDescription() {
-		return description;
+	public boolean isFinally() {
+		return isFinally;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setFinally(boolean isFinally) {
+		this.isFinally = isFinally;
+	}
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
 	}
 
 }

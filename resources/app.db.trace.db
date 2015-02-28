@@ -1,0 +1,115 @@
+02-28 09:14:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:15:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "STEP" already exists; SQL statement:
+create table step(
+	id int not null,
+	title varchar(100),
+	isFinally boolean default false not null,
+	constraint pkstep00 primary key(id)
+) [42101-185]
+02-28 09:15:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:15:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:15:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:15:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:15:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:15:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:15:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:19:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP IF[*] EXISTIS TASK "; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE"; SQL statement:
+drop if existis task [42001-185]
+02-28 09:19:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE IF EXISTIS[*] TASK "; expected "EXISTS"; SQL statement:
+drop table if existis task [42001-185]
+02-28 09:19:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:19:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:19:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:19:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 09:19:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 12:48:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-28 12:50:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Sequence "SEQ_STEP" already exists; SQL statement:
+create sequence seq_step [90035-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.ddl.CreateSequence.update(CreateSequence.java:57)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:78)
+	at org.h2.command.Command.executeUpdate(Command.java:254)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:184)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at net.sourceforge.squirrel_sql.client.session.StatementWrapper.execute(StatementWrapper.java:165)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.processQuery(SQLExecuterTask.java:369)
+	at net.sourceforge.squirrel_sql.client.session.SQLExecuterTask.run(SQLExecuterTask.java:212)
+	at net.sourceforge.squirrel_sql.fw.util.TaskExecuter.run(TaskExecuter.java:82)
+	at java.lang.Thread.run(Thread.java:745)
+02-28 12:51:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TASK" not found; SQL statement:
+drop table task [42102-185]
+02-28 17:11:38 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/ramon/git/sparkapp/src/main/resources/app.db.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:208)
+	at org.sql2o.GenericDatasource.getConnection(GenericDatasource.java:62)
+	at org.sql2o.Connection.createConnection(Connection.java:288)
+	at org.sql2o.Connection.<init>(Connection.java:51)
+	at org.sql2o.Sql2o.open(Sql2o.java:225)
+	at sparkapp.dao.StepDao.list(StepDao.java:23)
+	at sparkapp.Application.lambda$0(Application.java:19)
+	at sparkapp.Application$$Lambda$1/1343441044.handle(Unknown Source)
+	at spark.ResponseTransformerRouteImpl$1.handle(ResponseTransformerRouteImpl.java:47)
+	at spark.webserver.MatcherFilter.doFilter(MatcherFilter.java:154)
+	at spark.webserver.JettyHandler.doHandle(JettyHandler.java:60)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:179)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:136)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:451)
+	at org.eclipse.jetty.server.HttpChannel.run(HttpChannel.java:252)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:266)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.run(AbstractConnection.java:240)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:596)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:527)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:/home/ramon/git/sparkapp/src/main/resources/app.db.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 44 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:/home/ramon/git/sparkapp/src/main/resources/app.db.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 39 more
