@@ -1,7 +1,5 @@
 package sparkapp.dao;
 
-import java.sql.SQLException;
-
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
@@ -14,7 +12,7 @@ public class TaskDao {
 	private String updateSql = "update task set title = :title, description = :description, color = :color, stepId = :stepId where id = :id";
 	private String deleteSql = "delete from task where id = :id";
 
-	public TaskDao(Sql2o connection) throws SQLException {
+	public TaskDao(Sql2o connection) {
 		this.connection = connection;
 	}
 

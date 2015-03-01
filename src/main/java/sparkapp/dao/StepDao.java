@@ -1,6 +1,5 @@
 package sparkapp.dao;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.sql2o.Connection;
@@ -13,7 +12,7 @@ public class StepDao {
 
 	private Sql2o connection;
 
-	public StepDao(Sql2o connection) throws SQLException {
+	public StepDao(Sql2o connection) {
 		this.connection = connection;
 	}
 	
