@@ -1,7 +1,5 @@
 package sparkapp;
 
-import java.sql.SQLException;
-
 import spark.Spark;
 import sparkapp.domain.Task;
 import sparkapp.util.DbUtil;
@@ -9,7 +7,7 @@ import sparkapp.util.DbUtil;
 public class Application {
 
 
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) {
 		Spark.port(8080);
 		Spark.staticFileLocation("/public");
 
